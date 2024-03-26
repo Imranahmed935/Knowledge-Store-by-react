@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import { MdBookmarks } from "react-icons/md";
 
-const Blog = ({blog}) => {
+const Blog = ({blog, handleBookMark}) => {
   const {title, cover,author,author_img,posted_date,reading_time,hashtags}=blog
   console.log(author_img)
     return (
         <div className='mb-14'>
             <img className='w-full rounded-xl ' src={cover}alt="" />
-            <div className='flex justify-between mt-4 mb-4'>
+            <div className='flex justify-between items-center mt-4 mb-4'>
                 <div  className='flex gap-4'>
                     <img className='w-10 h-10 rounded-full' src={author_img} alt="" />
                     <div>
@@ -14,8 +15,9 @@ const Blog = ({blog}) => {
                         <p>{posted_date}</p>
                     </div>
                 </div>
-                <div>
+                <div className='flex justify-center items-center gap-3 '>
                     <h5>{reading_time} min read</h5>
+                    <button className='text-yellow-500 text-xl' onClick={()=>handleBookMark(blog)}><MdBookmarks/></button>
                 </div>
             </div>
             <h1 className='text-3xl'>{title}</h1>
@@ -29,7 +31,8 @@ const Blog = ({blog}) => {
 };
 
 Blog.propTypes = {
-    blog: PropTypes.object
+    blog: PropTypes.object,
+    handleBookMark:PropTypes.func
 }
 
 export default Blog;
