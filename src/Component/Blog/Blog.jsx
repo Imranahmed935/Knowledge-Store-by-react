@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { MdBookmarks } from "react-icons/md";
 
 const Blog = ({blog, handleBookMark, readTimes}) => {
-  const {title, cover,author,author_img,posted_date,reading_time,hashtags}=blog
+  const {id,title, cover,author,author_img,posted_date,reading_time,hashtags}=blog
     return (
         <div className='mb-14'>
             <img className='w-full rounded-xl ' src={cover}alt="" />
@@ -26,7 +26,7 @@ const Blog = ({blog, handleBookMark, readTimes}) => {
             }
 
            <h3 
-           onClick={()=>readTimes(reading_time)}
+           onClick={()=>readTimes(reading_time, id)}
            className='text-blue-500 mt-4 cursor-pointer pointer underline'
            >Mark as read</h3>
             
