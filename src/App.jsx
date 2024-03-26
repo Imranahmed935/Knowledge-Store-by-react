@@ -6,6 +6,11 @@ import Header from './Component/Header/Header'
 
 function App() {
   const [bookMarks, setBookmarks] = useState([]);
+  const [readingTimes, setReadingTimes]= useState(0)
+
+  const readTimes = (time) => {
+    setReadingTimes(readingTimes + time);
+  }
 
 const handleBookMark = (blog)=>{
   const newBlog = [...bookMarks, blog]
@@ -15,8 +20,15 @@ const handleBookMark = (blog)=>{
     <>
       <Header></Header>
        <div className='container mt-12 md:flex max-w-7xl mx-auto'> 
-       <Blogs handleBookMark={handleBookMark}></Blogs>
-       <BookMarks bookMarks={bookMarks}></BookMarks>
+       <Blogs 
+       handleBookMark={handleBookMark}
+       readTimes={readTimes}
+       
+       ></Blogs>
+       <BookMarks 
+       bookMarks={bookMarks}
+       readingTimes={readingTimes}
+       ></BookMarks>
        </div>
     </>
   )
